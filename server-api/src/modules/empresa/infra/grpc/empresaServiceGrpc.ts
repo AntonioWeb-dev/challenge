@@ -9,8 +9,17 @@ import { verifyJwt } from '@shared/infra/verifyJwt';
 
 export class EmpresaServer implements EmpresaServiceHandlers {
   [name: string]: import("@grpc/grpc-js").UntypedHandleCall;
-    async GetEmpresa (call: any, callback: any) { 
-      console.log(call)
+    async GetEmpresa (call: any, callback: any) {
+      const isValid = verifyJwt(call.request.jwt)
+        if (isValid === null) {
+          callback({
+            code: 403,
+            message: 'Unauthorized',
+            status: grpc.status.PERMISSION_DENIED
+          })
+          return;
+        }
+        delete call.request.jwt;
       const empresa = await findEmpresaByIdUseCase.execute(call.request)
       if (!empresa.isError) {
         callback(null, empresa.value)
@@ -56,6 +65,16 @@ export class EmpresaServer implements EmpresaServiceHandlers {
 
      async RemoveEmpresa(call: any, callback: any) {
       try {
+        const isValid = verifyJwt(call.request.jwt)
+        if (isValid === null) {
+          callback({
+            code: 403,
+            message: 'Unauthorized',
+            status: grpc.status.PERMISSION_DENIED
+          })
+          return;
+        }
+        delete call.request.jwt;
         const empresaResult = await removeEmpresaUseCase.execute(call.request)
         if (!empresaResult.isError) {
           callback(null, empresaResult.value)
@@ -77,6 +96,16 @@ export class EmpresaServer implements EmpresaServiceHandlers {
 
      async UpdateEmpresa(call: any, callback: any) {
       try {
+        const isValid = verifyJwt(call.request.jwt)
+        if (isValid === null) {
+          callback({
+            code: 403,
+            message: 'Unauthorized',
+            status: grpc.status.PERMISSION_DENIED
+          })
+          return;
+        }
+        delete call.request.jwt;
         const empresaResult = await updateEmpresaUseCase.execute(call.request)
         if (!empresaResult.isError) {
           callback(null, empresaResult.value)

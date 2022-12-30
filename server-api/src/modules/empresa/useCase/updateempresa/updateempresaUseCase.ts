@@ -16,7 +16,9 @@ export class UpdateEmpresaUseCase {
         return { isError: true, error: "Empresa não encontrada" };
       }
       const { id } = data;
-      await this.empresaRepo.update(id, data);
+      let args: Partial<IUpdateEmpresaRequest> = { ...data }
+      delete args.id;
+      await this.empresaRepo.update(id, args);
       return { isError: false, value: null };
     } catch (err) {
       return { isError: true, error: "Unexpected error" };
