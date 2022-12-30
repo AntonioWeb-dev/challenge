@@ -26,6 +26,8 @@
 
   # Executar projeto:
     Caso a API ainda esteja no ar você pode acessar por esse link: http://198.199.88.44:3001/
+    
+    Deploy feito em uma droplet basic 1gb RAM
   
   <h4>Caso você queira testar localmente, faça o passo a passo:</h4>
   
