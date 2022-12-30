@@ -7,7 +7,7 @@ import { EmpresaMapper } from "../mapper/EmpresaMapper";
 export class EmpresaRepository implements IEmpresaRepo {
   async findAll(): Promise<(Empresa | null)[]> {
     const raws = await client.empresa.findMany();
-    return raws.map((raw) => EmpresaMapper.toDomain(raw));
+    return raws.map((raw: any) => EmpresaMapper.toDomain(raw));
   }
   async create(empresa: Empresa): Promise<Empresa | null> {
     const data = EmpresaMapper.toPersistent(empresa);
