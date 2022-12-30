@@ -25,7 +25,7 @@
    - prisma
 
   # Executar projeto:
-    Caso a API ainda esteja no ar você pode acessar por esse link: http://198.199.88.44:3001/
+    Caso a API ainda esteja no ar você pode acessar por esse link: http://198.199.88.44
     
     Deploy feito em uma droplet basic 1gb RAM
   
