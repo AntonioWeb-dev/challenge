@@ -6,7 +6,8 @@
   "scripts": {
     "proto": "sh proto-gen.sh",
     "compile": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./proto --grpc_out=grpc_js:./proto -I ./proto ./proto/*.proto && grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=grpc_js:./proto -I ./proto ./proto/*.proto",
-    "start": "ts-node-dev src/index.ts"
+    "start": "yarn prisma migrate dev && yarn build && node ./build/src/index.js",
+    "build": "yarn tsc && cp ./proto/empresa.proto ./build/proto/empresa.proto"
   },
   "dependencies": {
     "@prisma/client": "4.8.0",

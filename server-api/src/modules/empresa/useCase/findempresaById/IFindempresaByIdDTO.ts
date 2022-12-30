@@ -1,4 +1,4 @@
-import { IEmpresaProps } from "@modules/empresa/domain/interface/IempresaProps";
+import { IEmpresaProps } from "@modules/empresa/domain/interface/IEmpresaProps";
 
 export interface IFindEmpresaRequest {
   id: string;
