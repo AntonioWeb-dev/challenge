@@ -1,5 +1,5 @@
 # Service 2
-  Este é um serviço feito para consumir o CRUD do serviço 1, e disponibilizar o CRUD via rest.
+  Este é um serviço que contém o jwt que dá permissão para consumir o CRUD do serviço 1, e disponibilizar o CRUD via rest.
 
 # Ferramentas usadas:
   - nodejs
